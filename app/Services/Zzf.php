@@ -35,6 +35,6 @@ class Zzf
                 }
             }
         }
-        return $res_string;
+        return ( $res_string == null? '没有公告':$res_string);
     }
 }

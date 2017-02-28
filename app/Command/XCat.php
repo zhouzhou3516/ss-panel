@@ -110,7 +110,7 @@ class XCat
     public function zzfggcx()
     {
         $ret = Zzf::zzfggcx();
-        Mail::sendSMTP('735338750@qq.com','自住房公告更新了',$ret);
-        echo 'sent email';
+        print(Mail::sendSMTP('735338750@qq.com','自住房公告更新了',$ret));
+        print( 'sent email');
     }
 }
