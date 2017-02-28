@@ -57,6 +57,21 @@ class Mail
     }
 
     /**
+ * @param $to
+ * @param $subject
+ * @param $template
+ * @param $ary
+ * @param $file
+ * @return bool|void
+ */
+    public static function send($to, $subject, $template, $ary = [], $file = [])
+    {
+        $text = self::genHtml($template, $ary);
+        Logger::debug($text);
+        return self::getClient()->send($to, $subject, $text, $file);
+    }
+
+    /**
      * @param $to
      * @param $subject
      * @param $template
@@ -64,10 +79,12 @@ class Mail
      * @param $file
      * @return bool|void
      */
-    public static function send($to, $subject, $template, $ary = [], $file = [])
+    public static function sendSMTP($to, $subject, $body, $file = [])
     {
-        $text = self::genHtml($template, $ary);
-        Logger::debug($text);
-        return self::getClient()->send($to, $subject, $text, $file);
+        Logger::error($body);
+        $smtp = new Smtp();
+        $flag =  $smtp->send($to, $subject, $body, []);
+        return $flag;
+
     }
 }

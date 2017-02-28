@@ -11,6 +11,9 @@ use App\Models\User;
 use App\Services\Config;
 use App\Utils\Hash;
 use App\Utils\Tools;
+use App\Services\Zzf;
+use App\Services\Mail;
+
 
 class XCat
 {
@@ -27,6 +30,8 @@ class XCat
         switch ($this->argv[1]) {
             case("install"):
                 return $this->install();
+            case("zzfggcx"):
+                return $this->zzfggcx();
             case("createAdmin"):
                 return $this->createAdmin();
             case("resetTraffic"):
@@ -100,5 +105,12 @@ class XCat
             return false;
         }
         return "reset traffic successful";
+    }
+
+    public function zzfggcx()
+    {
+        $ret = Zzf::zzfggcx();
+        Mail::sendSMTP('735338750@qq.com','自住房公告更新了',$ret);
+        echo 'sent email';
     }
 }
