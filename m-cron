@@ -1,2 +1,2 @@
-1 10 * * * root php /var/www/php_scripts/xcat zzfggcx  # execute 10:01 am per day
+1 10 * * *  php /var/www/html/ss-panel/xcat zzfggcx
 
