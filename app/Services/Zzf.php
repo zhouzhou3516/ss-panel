@@ -28,7 +28,10 @@ class Zzf
                     if($key==0 ){
                         $firstNode = $i;
                     }
-                    if($i -> nodeValue == date("Y-m-d")){
+                    if($i -> nodeValue == '2017-02-22')
+                    //if($i -> nodeValue == date("Y-m-d"))
+                    {
+                        
                         $res_string = $res_string . $base_url.$firstNode->getAttributeNode('href')->value.PHP_EOL.'<br>';
                     }
 
