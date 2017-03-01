@@ -113,5 +113,6 @@ class XCat
         $title = '自住房-' . (($ret == null)?'没有新公告':'有新公告');
         $body  = ($ret == null? '没有新公告':$ret);
         Mail::sendSMTP('735338750@qq.com',$title,$body);
+        print('sent email');
     }
 }
