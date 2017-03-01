@@ -110,13 +110,8 @@ class XCat
     public function zzfggcx()
     {
         $ret = Zzf::zzfggcx();
-        //if($ret != null)
-        //{
-            $title = '自住房-' . (($ret == null)?'没有新公告':'有新公告');
-            print($title);
-            Mail::sendSMTP('735338750@qq.com',$title,$ret);
-        //}
-
-        print( 'sent email');
+        $title = '自住房-' . (($ret == null)?'没有新公告':'有新公告');
+        $body  = ($ret == null? '没有新公告':$ret);
+        Mail::sendSMTP('735338750@qq.com',$title,$body);
     }
 }
