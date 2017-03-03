@@ -112,7 +112,12 @@ class XCat
         $ret = Zzf::zzfggcx();
         $title = '自住房-' . (($ret == null)?'没有新公告':'有新公告');
         $body  = ($ret == null? '没有新公告':$ret);
-        Mail::sendSMTP('735338750@qq.com',$title,$body);
+        $to_array = array("1025541660@qq.com",'735338750@qq.com');
+        foreach ($to_array as $to)
+        {
+            Mail::sendSMTP($to,$title,$body);
+        }
+        //Mail::sendSMTP('735338750@qq.com;1025541660@qq.com',$title,$body);
         print('sent email');
     }
 }
