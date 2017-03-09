@@ -1,4 +1,4 @@
-1 10 * * *  php /var/www/html/ss-panel/xcat zzfggcx
+1 2 * * *  php /var/www/html/ss-panel/xcat zzfggcx
 #every min
 # * * * * *  php /var/www/html/ss-panel/xcat zzfggcx
 
