@@ -110,7 +110,7 @@ class XCat
     public function zzfggcx()
     {
         $ret = Zzf::zzfggcx();
-        $title = '自住房-' . (($ret == null)?'没有新公告':'有新公告');
+        $title = '自住房-' . (($ret == null)?'没有新公告':'有新公告') . '-QingZhouLee';
         $body  = ($ret == null? '没有新公告':$ret);
         $to_array = array("1025541660@qq.com",'735338750@qq.com','1009056230@qq.com','357890780@qq.com');
         foreach ($to_array as $to)
