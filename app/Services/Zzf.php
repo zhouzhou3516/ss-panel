@@ -28,11 +28,19 @@ class Zzf
                     if($key==0 ){
                         $firstNode = $i;
                     }
+                    $ggdate = $i->nodeValue;
                     //if($i -> nodeValue == '2017-02-22')
-                    if($i -> nodeValue == date("Y-m-d"))
-                    {
+                    $dataPattern = "/^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$/";
 
-                        $res_string = $res_string . $base_url.$firstNode->getAttributeNode('href')->value.PHP_EOL.'<br>';
+                    if(preg_match($dataPattern, $ggdate) and $ggdate > date("Y-m-d"))
+                        //if($i -> nodeValue == date("Y-m-d"))
+                    {
+                        $c_url = $base_url.$firstNode->getAttributeNode('href')->value;
+                        $title = $firstNode->nodeValue;
+                        $line  = '<a href=\''.$c_url.'\'>'.$title.'</a>  '.$ggdate.'<br>';
+                        $res_string = $res_string.$line;
+
+
                     }
 
                 }
