@@ -13,6 +13,8 @@ class Zzf
 {
     public static function zzfggcx()
     {
+        $myfile = fopen("./storage/logs/zzfnews.log",'a+') or die("Unable to open file:zzfnews.log!");
+
         $base_url='http://www.bjjs.gov.cn';
         $tzgx_list_url='http://www.bjjs.gov.cn/bjjs/fwgl/zzxspzf/tzgg/index.shtml';
         $doc =  new DOMDocument();
@@ -29,16 +31,19 @@ class Zzf
                         $firstNode = $i;
                     }
                     $ggdate = $i->nodeValue;
-                    //if($i -> nodeValue == '2017-02-22')
                     $dataPattern = "/^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$/";
 
-                    if(preg_match($dataPattern, $ggdate) and $ggdate > date("Y-m-d"))
+                    if(preg_match($dataPattern, $ggdate) and $ggdate == date("Y-m-d"))
                         //if($i -> nodeValue == date("Y-m-d"))
                     {
                         $c_url = $base_url.$firstNode->getAttributeNode('href')->value;
                         $title = $firstNode->nodeValue;
                         $line  = '<a href=\''.$c_url.'\'>'.$title.'</a>  '.$ggdate.'<br>';
-                        $res_string = $res_string.$line;
+
+                        if(self::isexits($title.'-'.$ggdate."\n")==0){
+                            fwrite($myfile,$title.'-'.$ggdate."\n");
+                            $res_string = $res_string.$line;
+                        }
 
 
                     }
@@ -47,5 +52,26 @@ class Zzf
             }
         }
         return $res_string ;
+    }
+
+    /**
+     * check if title already exists in zzfnews.log
+     * @param $title
+     * @return int
+     */
+    public static function isexits($title){
+        $is_exist = 0;
+        if(file_exists("./storage/logs/zzfnews.log") and !empty($title)){
+            $myfile = fopen("./storage/logs/zzfnews.log",'r') or die("Unable to open file:zzfnews.log!");
+            // 输出单行直到 end-of-file
+            while(!feof($myfile)) {
+                $line = fgets($myfile);
+                if ($line == $title) {
+                    $is_exist=1;
+                }
+            }
+            fclose($myfile);
+        }
+        return $is_exist;
     }
 }
