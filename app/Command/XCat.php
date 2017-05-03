@@ -112,8 +112,13 @@ class XCat
         $ret = Zzf::zzfggcx();
         $title = '自住房-' . (($ret == null)?'没有新公告':'有新公告') . '-QingZhouLee';
         $body  = ($ret == null? '没有新公告':$ret);
-        $to_array = array("1025541660@qq.com",'735338750@qq.com','1009056230@qq.com','357890780@qq.com','781598458@qq.com');
-        //$to_array = array('735338750@qq.com');
+        $to_array = null;
+        if (Config::get('debug') == "true") {
+            $to_array = array('735338750@qq.com');
+        }else{
+            $to_array = array("1025541660@qq.com",'735338750@qq.com','1009056230@qq.com','357890780@qq.com','781598458@qq.com');
+        }
+        //
         if($ret != null )
         {
             foreach ($to_array as $to)
