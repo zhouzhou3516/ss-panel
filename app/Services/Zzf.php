@@ -2,7 +2,7 @@
 namespace App\Services;
 
 use DOMDocument;
-define('BASE_PATH', __DIR__ . '/../../');
+##define('BASE_PATH', __DIR__ . '/../../'); BASE_PATH already defined in bootstrap.php
 /**
  * Created by PhpStorm.
  * User: qingzhli
