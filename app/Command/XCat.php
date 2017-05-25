@@ -116,7 +116,7 @@ class XCat
         if (Config::get('debug') == "true") {
             $to_array = array('735338750@qq.com');
         }else{
-            $to_array = array("1025541660@qq.com",'735338750@qq.com','1009056230@qq.com','357890780@qq.com','781598458@qq.com');
+            $to_array = array("1025541660@qq.com",'735338750@qq.com','1009056230@qq.com','357890780@qq.com','781598458@qq.com','nanjx1229@163.com');
         }
         //
         if($ret != null )
